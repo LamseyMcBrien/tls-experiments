@@ -381,7 +381,7 @@ class Window_MessageLog < Window_Base
         end
       else
         pos = {:x => 0, :y => y, :new_x => 0, :height => calc_line_height(text)}
-        @right_margin = 48
+        @right_margin = 0
       #  process_character(text.slice!(0, 1), text, pos) until text.empty?
         @lastc = "\n"
        until text.empty? do 
@@ -489,7 +489,7 @@ class Window_MessageLog < Window_Base
       else
         pos = {:x => 0, :y => y, :new_x => 0, :height => calc_line_height(text)}
         @lastc = "\n"
-        @right_margin = 48
+        @right_margin = 0
       #  process_character(text.slice!(0, 1), text, pos) until text.empty?
        until text.empty? do 
           c = text.slice!(0, 1)
