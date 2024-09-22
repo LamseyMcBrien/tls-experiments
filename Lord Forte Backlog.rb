@@ -181,7 +181,6 @@ class Window_MessageLog < Window_Base
     #self.active = false
      self.active = true
     self.openness = 0
-    self.padding *= 2
     @index = 0
     #create_animated_bg
     open
@@ -276,8 +275,7 @@ class Window_MessageLog < Window_Base
   #--------------------------------------------------------------------------
   def create_log_contents(size)
     self.contents.dispose
-   # self.contents = Bitmap.new(width - padding * 2, [height - padding * 2, size * line_height].max)
-   self.contents = Bitmap.new(width, [height - padding * 2, size * line_height].max)
+    self.contents = Bitmap.new(width - padding * 2, [height - padding * 2, size * line_height].max)
   end
   
   #--------------------------------------------------------------------------
@@ -345,7 +343,7 @@ class Window_MessageLog < Window_Base
       reset_font_settings
       text = convert_escape_characters(text)
       if Soulpour777::Animated_Log::Animated_Log[i][1] == true
-        pos = {:x => 96, :y => y, :new_x => 96, :height => calc_line_height(text)}
+        pos = {:x => 104, :y => y, :new_x => 104, :height => calc_line_height(text)}
         @right_margin = 0
       #process_character(text.slice!(0, 1), text, pos) until text.empty?
       @lastc = "\n"
@@ -354,7 +352,7 @@ class Window_MessageLog < Window_Base
           c = ' ' if c == "\n"
           if c =~ /[ \t]/
             c = '' if @lastc =~ /[\s\n\f]/
-            if pos[:x] + get_next_word_size(c, text) > contents.width - @right_margin - 96
+            if pos[:x] + get_next_word_size(c, text) > contents.width - @right_margin
               process_new_line(text, pos)
             else
               #process_normal_character(c, pos)
@@ -452,7 +450,7 @@ class Window_MessageLog < Window_Base
       reset_font_settings
       text = convert_escape_characters(text)
       if Soulpour777::Animated_Log::Animated_Log[i][1] == true
-        pos = {:x => 96, :y => y, :new_x => 96, :height => calc_line_height(text)}
+        pos = {:x => 104, :y => y, :new_x => 104, :height => calc_line_height(text)}
         @right_margin = 0
       #process_character(text.slice!(0, 1), text, pos) until text.empty?
 	  @lastc = "\n"
@@ -461,7 +459,7 @@ class Window_MessageLog < Window_Base
           #c = ' ' if c == "\n"
           if c =~ /[ \t]/
             c = '' if @lastc =~ /[\s\n\f]/
-            if pos[:x] + get_next_word_size(c, text) > contents.width - @right_margin - 96
+            if pos[:x] + get_next_word_size(c, text) > contents.width - @right_margin
               process_new_line(text, pos)
             else
               #process_normal_character(c, pos)
